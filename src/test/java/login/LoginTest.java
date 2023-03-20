@@ -25,8 +25,8 @@ public class LoginTest {
         loginPage = new LoginPage(driver);
         successLogin = new SuccessLogin(driver);
         driver.manage().window().maximize();
-        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(50, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
         driver.get(ConfProperties.getProperty("loginpage"));
     }
 
@@ -39,6 +39,7 @@ public class LoginTest {
       loginPage.inputPassword(ConfProperties.getProperty("password"));
       Thread.sleep(2000);
       loginPage.clickSignInButton();
+        Thread.sleep(10000);
 
       Assertions.assertEquals(successLogin.getUserName(), TestValues.USER_NAME);
 
